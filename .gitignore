@@ -1,0 +1,61 @@
+## Build output
+**/bin/
+**/obj/
+**/out/
+
+## Visual Studio / MSBuild
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.cache
+*.dbmdl
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+*.DotSettings.user
+.ReSharper*/
+*_Resharper.*
+*.resharper.user
+
+## VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+## NuGet
+*.nupkg
+*.snupkg
+# If you use a local packages folder (rare nowadays):
+# packages/
+
+## Test / coverage
+TestResult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage*/
+.coverage
+.coveragexml
+
+## Logs
+*.log
+
+## Publish artifacts
+**/publish/
+artifacts/
+
+## OS junk
+.DS_Store
+Thumbs.db
+
+## Other common
+*.tmp
+*.temp
+*.pid
+*.pdb
