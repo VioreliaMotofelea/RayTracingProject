@@ -88,7 +88,43 @@ namespace rt
 
         public void Rotate(Quaternion q)
         {
-            // TODO: ADD CODE HERE
+            if (q == null)
+            {
+                return;
+            }
+
+            var qw = q.W;
+            var qx = q.X;
+            var qy = q.Y;
+            var qz = q.Z;
+
+            var norm = Math.Sqrt(qw * qw + qx * qx + qy * qy + qz * qz);
+            if (norm <= 1e-12)
+            {
+                return;
+            }
+
+            var invNorm = 1.0 / norm;
+            qw *= invNorm;
+            qx *= invNorm;
+            qy *= invNorm;
+            qz *= invNorm;
+
+            var vx = X;
+            var vy = Y;
+            var vz = Z;
+
+            var tx = 2.0 * (qy * vz - qz * vy);
+            var ty = 2.0 * (qz * vx - qx * vz);
+            var tz = 2.0 * (qx * vy - qy * vx);
+
+            var vpx = vx + qw * tx + (qy * tz - qz * ty);
+            var vpy = vy + qw * ty + (qz * tx - qx * tz);
+            var vpz = vz + qw * tz + (qx * ty - qy * tx);
+
+            X = vpx;
+            Y = vpy;
+            Z = vpz;
         }
     }
 }
