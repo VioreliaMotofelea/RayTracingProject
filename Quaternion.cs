@@ -22,7 +22,18 @@ public class Quaternion(double w, double x, double y, double z)
     
     public static Quaternion FromAxisAngle(double aa, Vector axis)
     {
-        // TODO: ADD CODE HERE
-        return NONE;
+        var qAxis = new Vector(axis);
+        var axisLength = qAxis.Length();
+        if (axisLength <= 1e-12)
+        {
+            return new Quaternion(1.0, 0.0, 0.0, 0.0);
+        }
+
+        qAxis = qAxis / axisLength;
+        var halfAngle = aa * 0.5;
+        var sinHalf = Math.Sin(halfAngle);
+        var cosHalf = Math.Cos(halfAngle);
+
+        return new Quaternion(cosHalf, qAxis.X * sinHalf, qAxis.Y * sinHalf, qAxis.Z * sinHalf).Normalize();
     }
 }
