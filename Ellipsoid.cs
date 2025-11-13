@@ -31,7 +31,6 @@ namespace rt
 
         public override Intersection GetIntersection(Line line, double minDist, double maxDist)
         {
-            // Rotate the incoming ray into the ellipsoid's local space (self-check: works with Rotation != Quaternion.NONE).
             var rotation = Rotation ?? Quaternion.NONE;
             var localRotation = new Quaternion(rotation.W, rotation.X, rotation.Y, rotation.Z).Normalize();
             var inverseRotation = new Quaternion(localRotation.W, -localRotation.X, -localRotation.Y, -localRotation.Z);
